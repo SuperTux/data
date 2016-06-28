@@ -269,6 +269,9 @@
     (class "invisible_wall")
     (icon "images/engine/editor/invisible_wall.png"))
   (object
+    (class "enemy_blocker")
+    (icon "images/engine/editor/enemyblocker.png"))
+  (object
     (class "scripttrigger")
     (icon "images/engine/editor/scripttrigger.png"))
   (object
