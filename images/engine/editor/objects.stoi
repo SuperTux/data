@@ -54,10 +54,10 @@
   (object
     (class "livefire_asleep")
     (icon "images/creatures/livefire/sleeping-left-1.png"))
- (object
+  (object
     (class "livefire_dormant")
     (icon "images/creatures/livefire/sleeping-left-0.png"))
- (object
+  (object
     (class "mole")
     (icon "images/creatures/mole/mole-5.png"))
   (object
