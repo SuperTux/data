@@ -1,0 +1,21 @@
+# Travis CI build for checking the integrity of lisp/s-expression files in the
+# SuperTux data repository.
+
+language: python
+python:
+  - "3.5"
+
+# Use containerized infrastructure, for faster builds.
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - findutils
+
+install:
+  - true
+
+script:
+  - python --version
+  - find . -type f \( -iname '*.stf' -o -iname '*.stl' -o -iname '*.stoi' -o -iname '*.strf' -o -iname '*.stwm' -o -iname '*.stxt' \) -print0 | xargs -0 -P 1 -n 1 tools/lispchecker

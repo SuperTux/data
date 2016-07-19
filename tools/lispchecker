@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+from __future__ import print_function
+import sys
+
+from sexpr import sexpr_read_from_file, SExprParseError
+
+def resultline(file, state='OK'):
+    print('[{file}] Lisp file {state}'.format(file=file, state=state))
+
+try:
+    sexpr_read_from_file(sys.argv[1])
+except SExprParseError as e:
+    resultline(sys.argv[1], 'BAD')
+    print(e)
+    sys.exit(1)
+else:
+    resultline(sys.argv[1], 'OK')
+    sys.exit(0)
