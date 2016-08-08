@@ -434,6 +434,18 @@
       (x 19)
       (y 41)
     )
+    (decal
+      (sprite "images/worldmap/common/boat/boat-facing-left.sprite")
+      (x 570)
+      (y 1300)
+    )
+    (special-tile
+      (invisible-tile #t)
+      (script "set_next_worldmap(\"levels/world1\", \"boat\"); exit_screen(); fadeout_screen(1);")
+      (apply-to-direction "north")
+      (x 19)
+      (y 40)
+    )
   )
   (tileset "images/worldmap.strf")
 )
