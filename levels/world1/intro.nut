@@ -1,31 +1,42 @@
 function initialize()
 {
+  Tux.deactivate();
+  Tux.set_visible(false);
   Tux.add_bonus("grow");
-  wait(1);
-  Tux.set_visible(true);
   RADIO.set_action("quiet");
   PENNY.set_action("stand-left");
   NOLOK.set_visible(false);
+  Effect.sixteen_to_nine(0);
+  Effect.fade_in(2);
+  Camera.scroll_to(0, 913, 15);
+  Tux.walk(200);
+  wait(1);
+  Tux.set_visible(true);
+  wait(4);
+  Tux.walk(0);
+  wait(11);
+  Tux.walk(200);
+  Camera.scroll_to(2840, 913, 18);
+  wait(7.3);
+  logo.fade_in(0.2);
+  wait(5.5);
+  logo.fade_out(1.2);
+  wait(5);
 }
 
 function logo_in()
 {
-  wait(3);
 }
 
 function intro_text()
 {
-  Text.set_text(_("Somewhere at the shores\nof Antarctica..."));
-  Text.fade_in(1);
-  wait(1);
-  Text.fade_out(1);
 }
 
 function rap_scene()
 {
   Tux.walk(0);
   Tux.set_visible(true);
-  wait(6.5);
+  wait(7);
   Text.set_text(_("Somewhere at the shores of Antarctica..."));
   Text.fade_in(1);
   wait(3);
@@ -165,21 +176,25 @@ function rap_scene()
   wait(1);
   Text.fade_out(0.5);
   wait(0.5);
+  Tux.set_dir(false);
+  Tux.walk(-200);
   Text.set_text(_("Tux: Penny!")); // t=3.9
   Text.fade_in(0.5);
-  wait(1);
+  wait(0.1);
+  Tux.walk(0);
+  wait(0.9);
   Text.fade_out(0.5);
   wait(0.5);
-  Tux.walk(-200);
+  Tux.set_dir(true);
+  Tux.walk(200);
   Text.set_text(_("Tux: Where are you, Penny?!")); // t=4.4
   Text.fade_in(0.5);
+  wait(0.1);
   Tux.walk(0);
-  Tux.walk(200);
-  wait(0.5);
-  Tux.walk(0);
-  wait(1.5);
+  wait(1.4);
   Text.fade_out(0.5);
   wait(0.3);
+  Tux.do_jump(-150);
   Text.set_text(_("Tux: Oh no. Nolok must have kidnapped her!")); // t=6.9
   Text.fade_in(0.5);
   wait(1);
