@@ -1,50 +1,62 @@
 function initialize()
 {
+  Tux.deactivate();
+  Tux.set_visible(false);
   Tux.add_bonus("grow");
   RADIO.set_action("quiet");
   PENNY.set_action("stand-left");
   NOLOK.set_visible(false);
-  LOGO.set_visible(false);
-  LOGO.enable_gravity(false);
-  SIGN.set_visible(false);
+  Effect.sixteen_to_nine(0);
+  Effect.fade_in(2);
+  Camera.scroll_to(0, 913, 15);
+  Tux.walk(200);
+  wait(1);
+  Tux.set_visible(true);
+  wait(4);
+  Tux.walk(0);
+  wait(11);
+  Tux.walk(200);
+  Camera.scroll_to(2840, 913, 18);
+  wait(7.3);
+  logo.fade_in(0.2);
+  wait(5.5);
+  logo.fade_out(1.2);
+  wait(5);
 }
 
 function logo_in()
 {
-  local x = LOGO.get_pos_x();
-  local y = LOGO.get_pos_y();
-  local time = 1.5;
-  LOGO.set_pos(x,-120);
-  LOGO.set_visible(true);
-  LOGO.set_velocity(0,(120+y)/time);
-  LOGO.enable_gravity(false);
-  wait(time);
-  LOGO.set_velocity(0,0);
-  wait(3);
-  LOGO.set_visible(false);
 }
 
 function intro_text()
 {
-  Text.set_text(_("Somewhere at the shores\nof Antarctica..."));
-  Text.fade_in(1);
-  wait(1);
-  Text.fade_out(1);
 }
 
 function rap_scene()
 {
-  Tux.deactivate();
+  Tux.walk(0);
+  Tux.set_visible(true);
+  wait(7);
+  Text.set_text(_("Somewhere at the shores of Antarctica..."));
+  Text.fade_in(1);
+  wait(3);
+  Text.fade_out(1);
+  wait(2);
+  Text.set_text(_("Tux and Penny had a nice picnic\non the ice fields."));
+  Text.fade_in(1);
+  wait(3);
+  Text.fade_out(1);
+  wait(1.5);
   //begin conversation and Tux rap
   play_sound("speech/tux_hello.ogg"); // 3.1 seconds
   Text.set_centered(false);
-  Text.set_text(_("Tux: Hello Penny"));
+  Text.set_text(_("Tux: Hello Penny."));
   Text.fade_in(1);
   wait(2.5);
   Text.fade_out(1);
   wait(1);
   play_sound("speech/penny_runt_01.ogg"); // 1.2 seconds
-  Text.set_text(_("Penny: Hey Tux"));
+  Text.set_text(_("Penny: Hey Tux."));
   Text.fade_in(0.5);
   wait(1);
   Text.fade_out(0.5);
@@ -136,55 +148,68 @@ function rap_scene()
   wait(0.796875);
   Tux.set_dir(true); //t=23.8 - Tux sees Nolok!
   Tux.do_jump(-520);
-  wait(151.0/64);
+  wait(1.5);
   // we have to activate Tux to hurt him
   Tux.activate();
   Tux.kill(false);
   Tux.deactivate();
-  wait(1.5);
+  wait(3);
   // song is done
   // darkness
   NOLOK.set_visible(false);
   NOLOK.set_solid(false);
   PENNY.set_visible(false);
   PENNY.set_solid(false);
-  RADIO.set_visible(false);
+  RADIO.set_action("quiet");
   RADIO.set_solid(false);
-  SIGN.set_visible(true);
   //wake up, Tux...
   Effect.fade_in(3);
   play_sound("speech/tux_upset.ogg"); // 11 seconds
   Text.set_text(_("Tux: Oww... my head..."));
   Text.fade_in(1);
   wait(1.9);
-  Tux.activate();
   Text.fade_out(0.3);
   wait(0.5);
+  Tux.do_jump(-150);
   Text.set_text(_("Tux: Wait!")); // t=2.4
   Text.fade_in(0.5);
   wait(1);
   Text.fade_out(0.5);
   wait(0.5);
+  Tux.set_dir(false);
+  Tux.walk(-200);
   Text.set_text(_("Tux: Penny!")); // t=3.9
   Text.fade_in(0.5);
-  wait(1);
+  wait(0.1);
+  Tux.walk(0);
+  wait(0.9);
   Text.fade_out(0.5);
   wait(0.5);
+  Tux.set_dir(true);
+  Tux.walk(200);
   Text.set_text(_("Tux: Where are you, Penny?!")); // t=4.4
   Text.fade_in(0.5);
-  wait(2);
+  wait(0.1);
+  Tux.walk(0);
+  wait(1.4);
   Text.fade_out(0.5);
-  wait(0.5);
-  Text.set_text(_("Tux: Oh no...")); // t=6.9
+  wait(0.3);
+  Tux.do_jump(-150);
+  Text.set_text(_("Tux: Oh no. Nolok must have kidnapped her!")); // t=6.9
   Text.fade_in(0.5);
   wait(1);
   Text.fade_out(0.5);
   wait(0.5);
+  Tux.walk(50);
+  Tux.walk(100);
+  Tux.walk(150);
+  Tux.walk(250);
+  Tux.walk(300);
   Text.set_text(_("Tux: Don't worry, Penny, I'll rescue you!")); // t=8.4
   Text.fade_in(0.5);
   wait(2);
   Text.fade_out(0.5);
-  wait(0.5);
+  wait(5);
 }
 
 function shake_bush()
@@ -207,13 +232,16 @@ function shake_bush_thread(table)
   table.shake_bush();
   table.wait(3);
   table.shake_bush();
+  Text.set_text(_("Suddenly, Nolok jumped out from behind\nan ice bush!"));
+  Text.fade_in(0.5);
   table.wait(2);
+  Text.fade_out(0.5);
   table.shake_bush();
   table.shake_bush(); // total 23 seconds
   //enter Nolok
   table.NOLOK.set_velocity(-220, 600);
   table.NOLOK.set_visible(true);
-  table.Effect.fade_out(1.3);
+  table.Effect.fade_out(0.5);
 }
 
 function end_level()
