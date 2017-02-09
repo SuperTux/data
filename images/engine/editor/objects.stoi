@@ -308,6 +308,9 @@
     (class "particles-snow")
     (icon "images/engine/editor/snow.png"))
   (object
+    (class "particles-leaves")
+    (icon "images/engine/editor/leaves.png"))
+  (object
     (class "background")
     (icon "images/engine/editor/background.png"))
   (object
