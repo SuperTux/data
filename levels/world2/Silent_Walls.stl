@@ -14,7 +14,7 @@
     (firefly
       (x 464)
       (y 1520)
-    )
+    )w
     (firefly
       (x 3040)
       (y 256)
@@ -449,7 +449,8 @@ trap1b.goto_node(0);
       (y 1218)
     )
     (ispy
-      (script "door4a.goto_node(0);
+      (script "wait(1);
+door4a.goto_node(0);
 door4b.goto_node(0);
 door3a.goto_node(1);
 door3b.goto_node(1);
@@ -899,7 +900,6 @@ door5b.goto_node(1);
     (ghosttree
       (x 1126)
       (y 908)
-      (dead-script "sector.Tux.trigger_sequence(\"fireworks\")")
     )
     (lantern
       (color 0 0 0)
