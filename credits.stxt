@@ -138,6 +138,11 @@
     )
     (blank)
     (person
+      (name "jumpball")
+      (info (_ "Programming, Translation"))
+      )
+    (blank)
+    (person
       (name "Sydney Dykstra")
       (info (_ "Graphics"))
     )
